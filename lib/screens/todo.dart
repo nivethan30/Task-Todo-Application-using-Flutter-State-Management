@@ -13,7 +13,7 @@ class Todo extends StatefulWidget {
 }
 
 class _TodoState extends State<Todo> {
-  TextEditingController contentController = TextEditingController();
+  //TextEditingController contentController = TextEditingController();
 
   final TodoProvider todoProvider = TodoProvider();
 
@@ -41,7 +41,7 @@ class _TodoState extends State<Todo> {
               var todo = provider.todoList[index];
               return GestureDetector(
                 onTap: () {
-                  EditTodoBottomSheet().show(context, todoProvider, todo);
+                  EditTodoBottomSheet().show(context, todo);
                 },
                 child: Card(
                   color: Colors.grey.shade700,
@@ -90,7 +90,7 @@ class _TodoState extends State<Todo> {
             }),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            AddTodoBottomSheet().show(context, contentController, (todo) {
+            AddTodoBottomSheet().show(context, (todo) {
               if (todo.isNotEmpty) {
                 TodoList newTodo =
                     TodoList(id: DateTime.now.toString(), content: todo);

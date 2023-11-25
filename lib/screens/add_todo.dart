@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AddTodoBottomSheet {
-  void show(BuildContext context, TextEditingController textEditingController,
+
+  TextEditingController contentController = TextEditingController();
+  
+  void show(BuildContext context,
       Function(String) onAddPressed) {
     showModalBottomSheet(
       backgroundColor: Colors.black,
@@ -31,20 +34,16 @@ class AddTodoBottomSheet {
                         style: TextStyle(color: Colors.white, fontSize: 20)),
                     const SizedBox(height: 16.0),
                     TextField(
-                      controller: textEditingController,
+                      controller: contentController,
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
                         hintText: 'Tap to Create Task',
                         hintStyle: TextStyle(color: Colors.white),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Colors
-                                  .transparent),
+                          borderSide: BorderSide(color: Colors.transparent),
                         ),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Colors
-                                  .transparent),
+                          borderSide: BorderSide(color: Colors.transparent),
                         ),
                       ),
                     ),
@@ -54,8 +53,8 @@ class AddTodoBottomSheet {
                       children: [
                         TextButton(
                           onPressed: () {
-                            onAddPressed(textEditingController.text);
-                            textEditingController.clear();
+                            onAddPressed(contentController.text);
+                            contentController.clear();
                             Navigator.pop(context); // Close the bottom sheet
                           },
                           child: const Text('Done'),

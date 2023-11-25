@@ -7,7 +7,7 @@ import 'package:todo_app/provider/todo_provider.dart';
 class EditTodoBottomSheet {
   final TextEditingController _textEditingController = TextEditingController();
 
-  void show(BuildContext context, TodoProvider todoProvider, TodoList todo) {
+  void show(BuildContext context,TodoList todo) {
     _textEditingController.text = todo.content;
 
     showModalBottomSheet(
@@ -81,7 +81,3 @@ class EditTodoBottomSheet {
     );
   }
 }
-
-// Example usage:
-// In your widget's build method or wherever you need to show the bottom sheet:
-// EditTodoBottomSheet().show(context, todoProvider, todo);
